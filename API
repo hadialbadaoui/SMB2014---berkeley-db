@@ -1,0 +1,14 @@
+	« API » a labilité de lire et écrire votre donner, gérer votre base de donnes, et effectuer d’autres activités avancées comme les transactions géré. Il y a deux bases de api qui communique avec « JE ». Le premier est le haut niveau « API » qui vous permet de rendre les classes Java persistante, et le second est le bas niveau « API » qui fournit une plus grande flexibilité lors de l'interaction avec les bases de données « JE ».
+
+Avantages de transaction
+	Transactions offrent la protection des données de votre application à partir de défaillances de l'application ou du système. Autrement dit, les transactions de « JE » offrent votre application plein soutien ACID:
+•	Atomicité
+		Plusieurs opérations de base de données sont traitées comme une seule unité de travail. Une fois engagé, tous les opérations d'écriture effectuées sous la protection de la transaction sont enregistrées dans les bases de données. En outre, dans le cas où vous interrompre une transaction, toutes les opérations d'écriture effectuées au cours de la transaction sont éliminées. Dans ce cas, votre base de données est laissé dans l'état où il était avant le début de l'opération, quel que soit le nombre ou le type d'opérations d'écriture que vous avez peut-être effectué au cours de la transaction.
+•	Cohérence
+		Vos bases de données ne verront jamais une transaction partiellement rempli. Cela est vrai même si votre application échoue alors qu'il ya des opérations en cours. Si l'application ou le système échoue, soit toutes les modifications de base de données apparaissent lorsque l'application prochaines courses, ou aucun d'entre eux apparaissent.
+
+En d'autres termes, quelle que soit la cohérence des exigences de votre demande ne sera jamais violé par JE. Si, par exemple, votre application nécessite chaque document pour inclure une identification de l'employé, et votre code ajoute fidèlement cet ID à ses enregistrements de base de données, alors JE ne violerai jamais cette exigence de cohérence. L'ID restera dans les enregistrements de la base jusqu'au moment que votre application choisit de le supprimer.
+•	Isolement
+		Alors qu'une transaction est en cours, vos bases de données apparaissent à la transaction comme s'il n'y a pas d'autres opérations qui se produisent en dehors de la transaction. Autrement dit, les opérations enveloppés dans une transaction aurez toujours une vue propre et cohérente de vos bases de données. Ils ne doivent jamais voir les mises à jour en cours sous la protection d'une autre transaction. Notez, cependant, que les garanties d'isolement peuvent être augmentées et détendue de la valeur par défaut. Voir Isolation pour plus d'informations.
+•	Durabilité
+		Une fois engagé à vos bases de données, vos modifications vont persister même dans le cas d'un échec de l'application ou du système. Notez que, comme l'isolement, la garantie de la durabilité peut être assouplie. Voir Transactions non durables pour plus d'informations.
